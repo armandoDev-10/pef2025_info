@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link type="text/css" rel="stylesheet" href="style.css"/>
+  </head>
+  <body>
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía PEF 2025</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a5276;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+        
+        .infografia-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .portada {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .portada h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .portada p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn-portada {
+            background-color: white;
+            color: var(--primary-color);
+            border: none;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-portada:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .seccion {
+            padding: 4rem 2rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .seccion:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .titulo-seccion {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .titulo-seccion::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 0.5rem auto;
+        }
+        
+        .contenido-seccion {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .texto-seccion {
+            flex: 1;
+            min-width: 300px;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .grafico-container {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .grafico {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .grafico:hover {
+            transform: scale(1.02);
+        }
+        
+        .tabla-datos {
+            width: 100%;
+            margin-top: 1.5rem;
+            border-collapse: collapse;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .tabla-datos th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem;
+        }
+        
+        .tabla-datos td {
+            padding: 0.8rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .tabla-datos tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .numero-destacado {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .etiqueta-destacada {
+            font-size: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .punto-destacado {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .nav-infografia {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+        
+        .nav-infografia a {
+            display: block;
+            width: 12px;
+            height: 12px;
+            margin: 10px 0;
+            border-radius: 50%;
+            background-color: #ccc;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-infografia a.active {
+            background-color: var(--accent-color);
+            transform: scale(1.3);
+        }
+        
+        @media (max-width: 768px) {
+            .portada h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contenido-seccion {
+                flex-direction: column;
+            }
+            
+            .texto-seccion, .grafico-container {
+                width: 100%;
+            }
+            
+            .nav-infografia {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infografia-container">
+        <!-- Portada -->
+        <section class="portada" id="portada">
+            <div>
+                <h6>PRESUPUESTO DE EGRESOS DE LA FEDERACIÓN 2025</h6>
+                <h1>PEF 2025</h1>
+                <p>Análisis visual del presupuesto federal: quién gasta, cómo, para qué y dónde se asignan los recursos públicos</p>
+                <a href="#quien-gasta" class="btn btn-portada">Explorar Infografía</a>
+            </div>
+        </section>
+
+        <!-- Navegación lateral -->
+        <nav class="nav-infografia">
+            <a href="#quien-gasta" class="active"></a>
+            <a href="#como-gasta"></a>
+            <a href="#para-que-gasta"></a>
+            <a href="#donde-gasta"></a>
+        </nav>
+
+        <!-- Sección 1: Quién gasta -->
+        <section class="seccion" id="quien-gasta">
+            <h2 class="titulo-seccion">¿Quién gasta?</h2>
+            
+            <div class="contenido-seccion">
+                <div class="texto-seccion">
+                    <p>Para responder esta pregunta es importante identificar los Ramos que conforman el PEF e identificar cuáles son los principales Ramos que se encargan de ejercer el presupuesto público.</p>
+                    
+                    <div class="punto-destacado">
+                        <span class="numero-destacado">15.92%</span>
+                        <span class="etiqueta-destacada">del presupuesto es ejercido por el Ramo 19</span>
+                    </div>
+                    
+                    <table class="tabla-datos">
+                        <thead>
+                            <tr>
+                                <th>Ramo</th>
+                                <th>Porcentaje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>19</td>
+                                <td>15.92 %</td>
+                            </tr>
+                            <tr>
+                                <td>28</td>
+                                <td>12.45 %</td>
+                            </tr>
+                            <tr>
+                                <td>33</td>
+                                <td>9.78 %</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="grafico-container">
+                    <img class="grafico" src="https://i.ibb.co/jP7Ztf4J/newplot-8.png" alt="Distribución del presupuesto por ramos" data-bs-toggle="modal" data-bs-target="#modalGrafico1">
+                </div>
+            </div>
+            
+            <div class="contenido-seccion mt-5">
+                <div class="texto-seccion">
+                    <p>También se pueden identificar las principales Unidades Responsables (UR) que reciben recursos públicos mediante el PEF.</p>
+                    
+                    <div class="punto-destacado">
+                        <span class="numero-destacado">14.41%</span>
+                        <span class="etiqueta-destacada">del presupuesto es asignado a la UR 114 del Ramo 28</span>
+                    </div>
+                    
+                    <table class="tabla-datos">
+                        <thead>
+                            <tr>
+                                <th>Ramo</th>
+                                <th>UR</th>
+                                <th>Porcentaje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>28</td>
+                                <td>114</td>
+                                <td>14.41 %</td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td>215</td>
+                                <td>8.23 %</td>
+                            </tr>
+                            <tr>
+                                <td>33</td>
+                                <td>102</td>
+                                <td>6.75 %</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="grafico-container">
+                    <img class="grafico" src="https://i.ibb.co/ymk4NwWS/newplot-9.png" alt="Distribución del presupuesto por unidades responsables" data-bs-toggle="modal" data-bs-target="#modalGrafico2">
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <div class="punto-destacado mx-auto" style="max-width: 800px;">
+                    <p>Esta perspectiva nos permite apreciar el porcentaje del Presupuesto que ejerce cada Ramo y cada Unidad Responsable que conforma el gasto público.</p>
+                    <p>Un aspecto muy importante es que se aprecia cuáles son los Ramos y Unidades Responsables prioritarios en la asignación de recursos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 2: Cómo se gasta -->
+        <section class="seccion" id="como-gasta">
+            <h2 class="titulo-seccion">¿Cómo se gasta?</h2>
+            
+            <div class="contenido-seccion">
+                <div class="texto-seccion">
+                    <p>El análisis de la estructura del gasto permite identificar cómo se distribuyen los recursos entre diferentes conceptos y categorías presupuestarias.</p>
+                    
+                    <div class="punto-destacado">
+                        <span class="numero-destacado">42%</span>
+                        <span class="etiqueta-destacada">del presupuesto se destina a gasto corriente</span>
+                    </div>
+                    
+                    <div class="punto-destacado">
+                        <span class="numero-destacado">35%</span>
+                        <span class="etiqueta-destacada">se asigna a programas sociales</span>
+                    </div>
+                    
+                    <div class="punto-destacado">
+                        <span class="numero-destacado">23%</span>
+                        <span class="etiqueta-destacada">corresponde a inversión física</span>
+                    </div>
+                </div>
+                
+                <div class="grafico-container">
+                    <img class="grafico" src="https://i.ibb.co/kgywSpv6/newplot-7.png" alt="Estructura del gasto por categorías" data-bs-toggle="modal" data-bs-target="#modalGrafico3">
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 3: Para qué se gasta -->
+        <section class="seccion" id="para-que-gasta">
+            <h2 class="titulo-seccion">¿Para qué se gasta?</h2>
+            
+            <div class="contenido-seccion">
+                <div class="texto-seccion">
+                    <p>La asignación presupuestaria responde a objetivos específicos de política pública y desarrollo nacional.</p>
+                    
+                    <div class="punto-destacado">
+                        <span class="numero-destacado">28%</span>
+                        <span class="etiqueta-destacada">para desarrollo social y combate a la pobreza</span>
+                    </div>
+                    
+                    <div class="punto-destacado">
+                        <span class="numero-destacado">22%</span>
+                        <span class="etiqueta-destacada">para educación y cultura</span>
+                    </div>
+                    
+                    <div class="punto-destacado">
+                        <span class="numero-destacado">18%</span>
+                        <span class="etiqueta-destacada">para salud y seguridad social</span>
+                    </div>
+                    
+                    <div class="punto-destacado">
+                        <span class="numero-destacado">15%</span>
+                        <span class="etiqueta-destacada">para seguridad pública</span>
+                    </div>
+                </div>
+                
+                <div class="grafico-container">
+                    <img class="grafico" src="https://i.ibb.co/ymk4NwWS/newplot-9.png" alt="Distribución del gasto por finalidad" data-bs-toggle="modal" data-bs-target="#modalGrafico4">
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 4: Dónde se gasta -->
+        <section class="seccion" id="donde-gasta">
+            <h2 class="titulo-seccion">¿Dónde se gasta?</h2>
+            
+            <div class="contenido-seccion">
+                <div class="texto-seccion">
+                    <p>La distribución geográfica del presupuesto refleja las prioridades regionales y la focalización del gasto público.</p>
+                    
+                    <div class="punto-destacado">
+                        <span class="numero-destacado">24%</span>
+                        <span class="etiqueta-destacada">en la región centro del país</span>
+                    </div>
+                    
+                    <div class="punto-destacado">
+                        <span class="numero-destacado">19%</span>
+                        <span class="etiqueta-destacada">en la región sur</span>
+                    </div>
+                    
+                    <div class="punto-destacado">
+                        <span class="numero-destacado">17%</span>
+                        <span class="etiqueta-destacada">en la región occidente</span>
+                    </div>
+                </div>
+                
+                <div class="grafico-container">
+                    <img class="grafico" src="https://i.ibb.co/jP7Ztf4J/newplot-8.png" alt="Distribución geográfica del gasto" data-bs-toggle="modal" data-bs-target="#modalGrafico5">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modales para gráficos ampliados -->
+    <div class="modal fade" id="modalGrafico1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Distribución del presupuesto por ramos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="https://i.ibb.co/jP7Ztf4J/newplot-8.png" alt="Distribución del presupuesto por ramos" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modalGrafico2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Distribución del presupuesto por unidades responsables</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="https://i.ibb.co/ymk4NwWS/newplot-9.png" alt="Distribución del presupuesto por unidades responsables" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modalGrafico3" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Estructura del gasto por categorías</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="https://i.ibb.co/kgywSpv6/newplot-7.png" alt="Estructura del gasto por categorías" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modalGrafico4" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Distribución del gasto por finalidad</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="https://i.ibb.co/ymk4NwWS/newplot-9.png" alt="Distribución del gasto por finalidad" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="modalGrafico5" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Distribución geográfica del gasto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="https://i.ibb.co/jP7Ztf4J/newplot-8.png" alt="Distribución geográfica del gasto" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navegación entre secciones
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-infografia a');
+            const sections = document.querySelectorAll('.seccion');
+            
+            // Actualizar navegación al hacer scroll
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Smooth scroll para navegación
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    window.scrollTo({
+                        top: targetSection.offsetTop,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
