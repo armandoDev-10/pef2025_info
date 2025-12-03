@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -270,157 +269,296 @@
             }
         }
 
-        @media print {
-            /* Reset general para impresión */
-            * {
-                background: transparent !important;
-                color: black !important;
-                box-shadow: none !important;
-                text-shadow: none !important;
-            }
+        /* Reemplazar o añadir estas reglas en la sección @media print */
 
-            /* Oculta elementos innecesarios */
-            .no-print,
-            .navbar,
-            .header,
-            .footer,
-            .sidebar,
-            .btn,
-            .actions,
-            .advertisement,
-            .social-share,
-            .comments,
-            .breadcrumb,
-            .pagination {
-                display: none !important;
-            }
-
-            /* Ajusta el layout principal */
-            body {
-                width: 100% !important;
-                margin: 0 !important;
-                padding: 0.5in !important;
-                font-size: 12pt;
-                line-height: 1.4;
-                background: white !important;
-            }
-
-            /* Mejora la tipografía para impresión */
-            h1, h2, h3, h4, h5, h6 {
-                color: black !important;
-                page-break-after: avoid;
-            }
-
-            p, li {
-                orphans: 3;
-                widows: 3;
-            }
-
-            /* Control de saltos de página */
-            .page-break {
-                page-break-before: always;
-            }
-
-            .avoid-break {
-                page-break-inside: avoid;
-            }
-
-            /* Imágenes y tablas */
-            img {
-                max-width: 100% !important;
-                height: auto !important;
-                /* filter: grayscale(100%) !important;Ahorra tinta */
-            }
-
-            table {
-                page-break-inside: avoid;
-                border: 1px solid #000 !important;
-            }
-
-            th, td {
-                border: 1px solid #000 !important;
-                padding: 4px !important;
-            }
-
-            /* Enlaces - muestra la URL */
-            a {
-                text-decoration: underline !important;
-            }
-
-            a[href]:after {
-                content: " (" attr(href) ")";
-                font-size: 10pt;
-                font-style: italic;
-            }
-
-            /* No mostrar URLs para enlaces internos o que no sean útiles */
-            a[href^="#"],
-            a[href^="javascript:"],
-            a[href^="/"] {
-                text-decoration: none !important;
-            }
-
-            a[href^="#"]:after,
-            a[href^="javascript:"]:after,
-            a[href^="/"]:after {
-                content: "" !important;
-            }
-
-            /* Contenedor principal */
-            .container,
-            .main-content,
-            .content {
-                width: 100% !important;
-                max-width: 100% !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                float: none !important;
-            }
-
-            /* Encabezados para impresión */
-            .print-header {
-                display: block !important;
-                text-align: center;
-                border-bottom: 2px solid #000;
-                margin-bottom: 20px;
-                padding-bottom: 10px;
-            }
-
-            /* Muestra información de la página */
-            @page {
-                margin: 0.5in;
-                size: letter;
-
-                @bottom-right {
-                    content: "Página " counter(page) " de " counter(pages);
-                    font-size: 10pt;
-                    color: #666;
-                }
-            }
-
-            /* Para la primera página */
-            @page :first {
-                margin-top: 1in;
-            }
-
-            /* Ajustes específicos para listas */
-            ul, ol {
-                margin-left: 20px !important;
-            }
-
-            /* Mejora la legibilidad del texto */
-            p {
-                margin-bottom: 12pt !important;
-            }
-
-            /* Asegura que los bloques de código se vean bien */
-            pre, code {
-                border: 1px solid #999 !important;
-                background: #f5f5f5 !important;
-                page-break-inside: avoid;
-                font-family: "Courier New", monospace !important;
-            }
+@media print {
+    /* Reset para impresión */
+    * {
+        background: transparent !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+        font-family: "Times New Roman", Times, serif !important;
+    }
+    
+    body {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0.5in !important;
+        font-size: 11pt !important;
+        line-height: 1.4 !important;
+        background: white !important;
+    }
+    
+    /* Ocultar elementos no necesarios */
+    .no-print,
+    .nav-infografia,
+    .btn,
+    .btn-portada,
+    .grafico:hover,
+    .portada {
+        display: none !important;
+    }
+    
+    /* Ajustar secciones para impresión */
+    .seccion {
+        min-height: auto !important;
+        padding: 0.5in 0 !important;
+        page-break-inside: avoid;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 0.5in;
+    }
+    
+    .seccion:last-child {
+        border-bottom: none;
+    }
+    
+    .titulo-seccion {
+        color: black !important;
+        font-size: 16pt !important;
+        margin-bottom: 0.3in !important;
+        text-align: left !important;
+        padding-bottom: 0.1in !important;
+        page-break-after: avoid;
+    }
+    
+    .titulo-seccion::after {
+        width: 2in !important;
+        left: 0 !important;
+        transform: none !important;
+        background-color: black !important;
+    }
+    
+    /* Optimizar tablas para impresión */
+    .tabla-datos {
+        width: 100% !important;
+        border: 1px solid black !important;
+        border-collapse: collapse !important;
+        margin: 0.2in 0 0.3in 0 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        font-size: 9pt !important;
+    }
+    
+    .tabla-datos th {
+        background-color: #f0f0f0 !important;
+        color: black !important;
+        padding: 6px 8px !important;
+        text-align: left !important;
+        border: 1px solid black !important;
+        font-weight: bold;
+    }
+    
+    .tabla-datos td {
+        padding: 5px 8px !important;
+        border: 1px solid black !important;
+        vertical-align: top;
+    }
+    
+    .tabla-datos tr:nth-child(even) {
+        background-color: #f9f9f9 !important;
+    }
+    
+    .tabla-datos tr:hover {
+        background-color: inherit !important;
+    }
+    
+    /* Formatear números en tablas para impresión */
+    .tabla-datos td:nth-child(2),
+    .tabla-datos td:nth-child(3) {
+        font-family: "Courier New", monospace !important;
+        font-size: 8.5pt !important;
+    }
+    
+    .tabla-datos td:nth-child(2) {
+        text-align: right !important;
+        white-space: nowrap !important;
+    }
+    
+    .tabla-datos td:nth-child(3) {
+        text-align: center !important;
+    }
+    
+    /* Optimizar contenedores de contenido */
+    .contenido-seccion {
+        display: block !important;
+        gap: 0 !important;
+    }
+    
+    .texto-seccion {
+        min-width: 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 0.3in !important;
+    }
+    
+    .texto-seccion p {
+        font-size: 11pt !important;
+        line-height: 1.4 !important;
+        margin-bottom: 0.2in !important;
+        text-align: justify !important;
+        orphans: 3;
+        widows: 3;
+    }
+    
+    /* Puntos destacados en impresión */
+    .punto-destacado {
+        background-color: #f5f5f5 !important;
+        border-left: 3px solid black !important;
+        border: 1px solid #ddd !important;
+        padding: 0.2in !important;
+        margin: 0.2in 0 !important;
+        page-break-inside: avoid;
+    }
+    
+    .numero-destacado {
+        font-size: 16pt !important;
+        color: black !important;
+        margin-bottom: 0.1in !important;
+    }
+    
+    .etiqueta-destacada {
+        font-size: 10pt !important;
+        font-weight: bold !important;
+        display: block;
+        margin-bottom: 0.1in !important;
+    }
+    
+    /* Gráficos (si se imprimen) */
+    .grafico-container {
+        min-width: 100% !important;
+        max-width: 100% !important;
+        text-align: center !important;
+        margin: 0.3in 0 !important;
+        page-break-inside: avoid;
+    }
+    
+    .grafico {
+        max-width: 100% !important;
+        height: auto !important;
+        filter: grayscale(100%) !important;
+        border: 1px solid #ddd !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+    
+    /* Encabezado de impresión */
+    .infografia-container::before {
+        content: "Infografía PEF 2025 - Análisis Presupuestal";
+        display: block;
+        text-align: center;
+        font-size: 14pt;
+        font-weight: bold;
+        margin-bottom: 0.3in;
+        padding-bottom: 0.1in;
+        border-bottom: 2px solid black;
+    }
+    
+    /* Pie de página */
+    footer {
+        background-color: white !important;
+        color: black !important;
+        text-align: center !important;
+        padding: 0.2in !important;
+        margin-top: 0.5in !important;
+        border-top: 1px solid black !important;
+        font-size: 8pt !important;
+    }
+    
+    footer a {
+        color: black !important;
+        text-decoration: underline !important;
+    }
+    
+    /* Control de saltos de página */
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+    }
+    
+    p, li {
+        page-break-inside: avoid;
+        orphans: 3;
+        widows: 3;
+    }
+    
+    /* Evitar que las tablas se corten */
+    table {
+        page-break-inside: avoid;
+    }
+    
+    /* Numeración de páginas */
+    @page {
+        margin: 0.5in;
+        size: letter;
+        
+        @bottom-right {
+            content: "Página " counter(page) " de " counter(pages);
+            font-size: 8pt;
+            color: #666;
         }
+        
+        @top-center {
+            content: "Presupuesto de Egresos de la Federación 2025";
+            font-size: 9pt;
+            color: #666;
+        }
+    }
+    
+    /* Primera página sin encabezado superior */
+    @page :first {
+        margin-top: 1in;
+        
+        @top-center {
+            content: none;
+        }
+    }
+    
+    /* Enlaces - mostrar URL solo si es externa */
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 8pt;
+        font-style: italic;
+        word-break: break-all;
+    }
+    
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "" !important;
+    }
+    
+    /* Ajustar DataTables para impresión */
+    .dataTables_wrapper {
+        overflow: visible !important;
+        width: 100% !important;
+    }
+    
+    .dataTables_length,
+    .dataTables_filter,
+    .dataTables_info,
+    .dataTables_paginate,
+    .dt-buttons {
+        display: none !important;
+    }
+    
+    .dataTables_scroll {
+        overflow: visible !important;
+    }
+    
+    .dataTables_scrollBody {
+        overflow: visible !important;
+        height: auto !important;
+    }
+    
+    /* Clase específica para forzar salto de página antes */
+    .page-break-before {
+        page-break-before: always;
+    }
+    
+    /* Clase para evitar salto de página dentro */
+    .no-break-inside {
+        page-break-inside: avoid;
+    }
+}
+
 
     </style>
 </head>
